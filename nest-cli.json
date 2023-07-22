@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/multidanspro_backend_test/src",
+  "monorepo": true,
+  "root": "apps/multidanspro_backend_test",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/multidanspro_backend_test/tsconfig.app.json"
+  },
+  "projects": {
+    "backend_test": {
+      "type": "application",
+      "root": "apps/backend_test",
+      "entryFile": "main",
+      "sourceRoot": "apps/backend_test/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/backend_test/tsconfig.app.json"
+      }
+    },
+    "util": {
+      "type": "library",
+      "root": "libs/util",
+      "entryFile": "index",
+      "sourceRoot": "libs/util/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/util/tsconfig.lib.json"
+      }
+    },
+    "prisma": {
+      "type": "library",
+      "root": "libs/prisma",
+      "entryFile": "index",
+      "sourceRoot": "libs/prisma/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/prisma/tsconfig.lib.json"
+      }
+    },
+    "auth_jwt": {
+      "type": "library",
+      "root": "libs/auth_jwt",
+      "entryFile": "index",
+      "sourceRoot": "libs/auth_jwt/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/auth_jwt/tsconfig.lib.json"
+      }
+    }
+  }
+}

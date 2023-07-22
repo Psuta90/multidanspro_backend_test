@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  backend_test:
+    build: .
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    env_file:
+      - .env
+      
+    command: bash -c "npm install  && npx prisma generate && npm run start:dev backend_test"
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:latest
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: AdriansyahBackendTest
+      MYSQL_DATABASE: backend_test
+      MYSQL_USER: multidanspro
+      MYSQL_PASSWORD: AdriansyahBackendTest
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
